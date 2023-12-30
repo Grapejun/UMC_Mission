@@ -25,4 +25,7 @@ public class MemberRestController {
         Member member = memberCommandService.joinMember(request);
         return ApiResponse.onSuccess(MemberConverter.toJoinResultDTO(member));
     }
+
+    // 4. 가게의 미션을 도전 중인 미션에 추가(미션 도전하기) API
+
 }
