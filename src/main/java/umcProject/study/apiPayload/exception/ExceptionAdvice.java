@@ -29,7 +29,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 @RestControllerAdvice(annotations = {RestController.class})
 public class ExceptionAdvice extends ResponseEntityExceptionHandler {
 
-    @org.springframework.web.bind.annotation.ExceptionHandler//(ConstraintViolationException.class)
+    @org.springframework.web.bind.annotation.ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Object> validation(ConstraintViolationException e, WebRequest request) {
         String errorMessage = e.getConstraintViolations().stream()
                 .map(constraintViolation -> constraintViolation.getMessage())
