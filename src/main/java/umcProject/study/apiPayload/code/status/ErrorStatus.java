@@ -18,6 +18,8 @@ public enum ErrorStatus implements BaseErrorCode {
 
     REGION_NOT_FOUND(HttpStatus.NOT_FOUND, "REGION4001", "지역을 찾을 수 없습니다."),
 
+    STORE_NOT_FOUND(HttpStatus.NOT_FOUND, "STORE4001", "식당을 찾을 수 없습니다."),
+
     BAD_REQUEST(HttpStatus.BAD_REQUEST, "COMMON400", "잘못된 요청입니다."),
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "COMMON500", "서버 에러. 관리자에게 문의 바랍니다."),
     UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "COMMON401", "인증이 필요합니다."),
