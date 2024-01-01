@@ -2,6 +2,7 @@ package umcProject.study.service.MissionService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import umcProject.study.apiPayload.code.status.ErrorStatus;
 import umcProject.study.apiPayload.exception.handler.ReviewHandler;
 import umcProject.study.domain.Mission;
@@ -12,12 +13,14 @@ import umcProject.study.web.dto.MissionAddRequestDTO;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MissionCommandServiceImpl implements MissionCommandService {
 
     private final MissionRepository missionRepository;
     private final StoreRepository storeRepository;
 
     @Override
+    @Transactional
     public Mission AddMission(MissionAddRequestDTO.AddDTO request) {
 
         Store store = storeRepository.findById(request.getStoreId())

@@ -20,6 +20,11 @@ public enum ErrorStatus implements BaseErrorCode {
 
     STORE_NOT_FOUND(HttpStatus.NOT_FOUND, "STORE4001", "식당을 찾을 수 없습니다."),
 
+    MISSION_NOT_FOUND(HttpStatus.NOT_FOUND, "MISSION4001", "미션을 찾을 수 없습니다."),
+
+
+    DUPLICATED_MEMBER_MISSION(HttpStatus.BAD_REQUEST, "MEMBERMISSION4001", "중복된 미션 등록입니다."),
+
     BAD_REQUEST(HttpStatus.BAD_REQUEST, "COMMON400", "잘못된 요청입니다."),
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "COMMON500", "서버 에러. 관리자에게 문의 바랍니다."),
     UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "COMMON401", "인증이 필요합니다."),

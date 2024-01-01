@@ -29,6 +29,17 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 @RestControllerAdvice(annotations = {RestController.class})
 public class ExceptionAdvice extends ResponseEntityExceptionHandler {
 
+    @org.springframework.web.bind.annotation.ExceptionHandler(MemberMissionAlreadyExistsException.class)
+    public ResponseEntity<Object> handleMemberMissionAlreadyExistsException(MemberMissionAlreadyExistsException e, WebRequest request) {
+        ApiResponse<Object> body = ApiResponse.onFailure(
+                ErrorStatus.DUPLICATED_MEMBER_MISSION.getCode(),
+                ErrorStatus.DUPLICATED_MEMBER_MISSION.getMessage(),
+                e.getMessage()
+        );
+
+        return new ResponseEntity<>(body, ErrorStatus.DUPLICATED_MEMBER_MISSION.getHttpStatus());
+    }
+
     @org.springframework.web.bind.annotation.ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Object> validation(ConstraintViolationException e, WebRequest request) {
         String errorMessage = e.getConstraintViolations().stream()
@@ -55,6 +66,7 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
 
         return handleExceptionInternalArgs(e, HttpHeaders.EMPTY, ErrorStatus.valueOf("BAD_REQUEST"), request, errors);
     }
+
 
     @org.springframework.web.bind.annotation.ExceptionHandler
     public ResponseEntity<Object> exception(Exception e, WebRequest request) {
